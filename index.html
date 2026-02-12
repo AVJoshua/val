@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A romantic Valentine's Day proposal" />
+    <title>My Valentine Proposal</title>
+
+    <!-- Tailwind CSS -->
+    
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@100;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- index CSS -->
+     
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    
+  </head>
+  <body>
+    <!-- Background Hearts Container -->
+    <div id="hearts-container" class="fixed inset-0 overflow-hidden pointer-events-none"></div>
+
+    <!-- Image Carousel Background -->
+    <div
+      id="image-carousel"
+      class="fixed inset-0 bg-cover bg-center z-5 transition-all duration-700"
+      style="background-image: url('images/alexander-grey-J3m69BAg30s-unsplash.jpg');"
+    >
+      <div class="absolute inset-0 bg-black/30"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div class="fixed inset-0 flex items-center justify-center p-4">
+      <!-- LOGIN PANE (shows before intro) -->
+      <div id="login-pane" class="z-10">
+        <h2>Welcome</h2>
+        <div id="countdown-message" style="display:none; text-align:center; margin-bottom:1rem; color:#ec4899; font-weight:600; font-size:0.95rem;"></div>
+        <div class="form-group">
+          <label for="username">Enter your pet name</label>
+          <input id="username-input" type="text" placeholder="usually the name ur BF calls U🥱" aria-label="Username" />
+          <div id="login-error" class="login-error">Invalid username</div>
+        </div>
+        <button id="login-btn" class="btn-base btn-primary w-full">Log In</button>
+      </div>
+
+      <!-- STAGE 1: Introduction -->
+      <div
+        id="intro-card"
+        class="glass-card shadow-2xl p-8 md:p-12 max-w-md w-full z-10 card-enter hidden"
+      >
+        <div class="text-center space-y-6">
+          <div class="text-5xl mb-4">💕</div>
+          <h1
+            id="intro-text"
+            class="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-red-600 text-fade-in"
+          >
+            Baby Girl...
+            You know today holds a special memory for us right?🥹
+          </h1>
+          <p
+            id="intro-subtitle"
+            class="text-gray-600 text-lg opacity-0 transition-opacity duration-500"
+          >
+            I have something important to ask you.
+          </p>
+          <button
+            onclick="proposalApp.nextStep()"
+            class="btn-base btn-primary w-full mt-8"
+            aria-label="Continue to next step"
+          >
+            Click Me ✨
+          </button>
+        </div>
+      </div>
+
+      <!-- STAGE 2: The Question -->
+      <div
+        id="question-card"
+        class="hidden z-10 text-center max-w-2xl w-full card-enter"
+      >
+        <div class="space-y-6">
+          <div class="text-7xl md:text-8xl heartbeat drop-shadow-md">❤️</div>
+
+          <h1 class="script-font text-5xl md:text-7xl text-pink-600 leading-tight">
+            Will you be my Valentine?
+          </h1>
+
+          <p class="text-gray-700 text-lg md:text-xl font-medium">
+            (I promise to buy you chocolate 🍫)
+          </p>
+
+          <div
+            class="flex justify-center gap-4 md:gap-8 items-center h-24 md:h-28 mt-10"
+          >
+            <!-- Yes Button -->
+            <button
+              id="yes-btn"
+              onclick="proposalApp.acceptProposal()"
+              class="btn-base btn-yes"
+              aria-label="Yes, I will be your Valentine"
+            >
+              YES! 💚
+            </button>
+
+            <!-- No Button (Dodging) -->
+            <button
+              id="no-btn"
+              class="btn-base btn-no"
+              aria-label="No button"
+              style="position: relative"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAGE 3: Success Celebration -->
+      <div
+        id="success-card"
+        class="hidden z-10 text-center max-w-2xl w-full glass-card shadow-2xl p-8 md:p-12 card-enter"
+      >
+        <div class="space-y-8">
+          <div class="text-6xl md:text-8xl">🥰🎉</div>
+
+          <div>
+            <h2 class="script-font text-6xl md:text-8xl text-pink-600 mb-4">
+              She said YES!
+            </h2>
+            <p class="text-xl md:text-2xl text-gray-700 font-medium">
+              🎊 You just made me the happiest person in the world! 🎊
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-r from-pink-100 to-red-100 rounded-xl p-6 space-y-2">
+            <p class="text-lg text-gray-700">Love you so much! ❤️</p>
+            <p class="text-sm text-gray-600">
+              Screenshot this and share it with me!
+            </p>
+          </div>
+
+          <button
+            onclick="proposalApp.reset()"
+            class="btn-base btn-primary w-full"
+            aria-label="Start over"
+          >
+            Start Over
+          </button>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
